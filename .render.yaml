@@ -1,8 +1,10 @@
 services:
   - type: web
-    name: spring-boot-gradle-app
+    name: yatra
     env: java
-    buildCommand: "./gradlew build -x test"
-    startCommand: "java -jar build/libs/CommonService-0.0.1-SNAPSHOT.jar"
-    branch: main
     plan: free
+    branch: main   # change this if your branch is something else
+    buildCommand: "./gradlew build -x test"
+    startCommand: "java -jar build/libs/CommonService-0.0.1-SNAPSHOT.jar"  # adjust if JAR name is different
+    autoDeploy: true
+
