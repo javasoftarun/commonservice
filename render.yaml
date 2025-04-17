@@ -1,10 +1,12 @@
 services:
   - type: web
     name: yatra
-    env: java
     plan: free
-    branch: main   # change this if your branch is something else
-    buildCommand: "./gradlew build -x test"
-    startCommand: "java -jar build/libs/CommonService-0.0.1-SNAPSHOT.jar"  # adjust if JAR name is different
-    autoDeploy: true
+    branch: main
+    buildCommand: ./gradlew build -x test
+    startCommand: java -jar build/libs/CommonService-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
+
 
