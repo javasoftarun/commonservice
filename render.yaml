@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: common-service
-    buildCommand: "./gradlew clean build"
-    startCommand: "java -jar build/libs/CommonService-0.0.1-SNAPSHOT.jar"
-    plan: free
-
-
-
