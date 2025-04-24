@@ -18,7 +18,7 @@ import com.yatranow.CommonService.response.ApiResponse;
 import com.yatranow.CommonService.service.CloudinaryService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/common")
 public class CloudinaryController {
 
     private final CloudinaryService cloudinaryService;

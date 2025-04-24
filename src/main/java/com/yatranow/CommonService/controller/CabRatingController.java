@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/api/cab-rating/")
+@RequestMapping("/api/common/cab-rating/")
 @Tag(name = "Cab Rating API", description = "API for managing cab ratings")
 public class CabRatingController {
     @Autowired
