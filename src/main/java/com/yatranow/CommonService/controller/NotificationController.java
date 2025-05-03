@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/common/notifications")
 @Tag(name = "Notification Controller", description = "APIs for managing notifications")
