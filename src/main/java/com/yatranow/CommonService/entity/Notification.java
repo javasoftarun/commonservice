@@ -2,6 +2,7 @@ package com.yatranow.CommonService.entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Notification {
 	private Long id;
     private String name;
     private String message;
+    @Column(name = "`read`")
     private boolean read;
     private Long userId;
     private String type;
