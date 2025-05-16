@@ -31,8 +31,8 @@ public class DashboardService {
     @Value("${cabandbookings.api.url}")
     private String bookingApiUrl;
 
-    public long activeCabs;
-    public long inactiveCabs;
+    public long activeCabs = 0;
+    public long inactiveCabs = 0;
     public double totalProfit = 0.0;
     public int pendingBookings = 0;
     public int canceledBookings = 0;
@@ -43,6 +43,12 @@ public class DashboardService {
      * @return a {@link DashboardResponse} object containing the dashboard data.
      */
     public DashboardResponse getDashboardData() {
+    	this.activeCabs = 0;
+    	this.inactiveCabs = 0;
+    	this.pendingBookings = 0;
+    	this.canceledBookings = 0;
+    	this.totalProfit = 0.0;
+    			
         long totalUsers = getTotalUsers();
         long totalCabs = getTotalCabs();
         long totalBookings = getTotalBookings();
