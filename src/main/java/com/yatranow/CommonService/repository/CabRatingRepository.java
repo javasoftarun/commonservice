@@ -9,6 +9,9 @@ import com.yatranow.CommonService.entity.CabRating;
 
 @Repository
 public interface CabRatingRepository extends JpaRepository<CabRating, Long> {
-    List<CabRating> findByCabRegistrationId(Long cabRegistrationId);
+    
+	List<CabRating> findByCabRegistrationId(Long cabRegistrationId);
+
+	List<CabRating> findByUserId(long userId);
 }
 

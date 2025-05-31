@@ -36,4 +36,9 @@ public class CabRatingService {
         List<CabRating> ratings = repository.findByCabRegistrationId(cabRegistrationId);
         return ratings.stream().mapToInt(CabRating::getRating).average().orElse(0.0);
     }
+
+	public List<CabRating> getRatingByUserId(long userId) {
+		List<CabRating> ratings = repository.findByUserId(userId);
+		return ratings;
+	}
 }
