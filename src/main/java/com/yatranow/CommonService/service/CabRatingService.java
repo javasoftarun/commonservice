@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.yatranow.CommonService.entity.CabRating;
 import com.yatranow.CommonService.repository.CabRatingRepository;
+import com.yatranow.CommonService.response.RatingResponse;
 
 import java.util.List;
 
@@ -17,12 +18,22 @@ public class CabRatingService {
         return repository.save(rating);
     }
 
-    public List<CabRating> getRatingsByCabId(Long cabId) {
-        return repository.findByCabId(cabId);
+    public RatingResponse getRatingsByCabId(Long cabRegistrationId) {
+    	double averageRating = 0.0;
+    	int totalRatings = 0;
+    	RatingResponse ratingResponse = new RatingResponse();
+    	List<CabRating> ratings = repository.findByCabRegistrationId(cabRegistrationId);
+    	if (ratings != null && !ratings.isEmpty()) {
+    		averageRating = ratings.stream().mapToInt(CabRating::getRating).average().orElse(0.0);
+    		totalRatings = ratings.size();
+			ratingResponse.setAverageRating(averageRating);
+			ratingResponse.setTotalRatings(totalRatings);
+    	}
+        return ratingResponse;
     }
 
-    public double getAverageRating(long cabId) {
-        List<CabRating> ratings = repository.findByCabId(cabId);
+    public double getAverageRating(long cabRegistrationId) {
+        List<CabRating> ratings = repository.findByCabRegistrationId(cabRegistrationId);
         return ratings.stream().mapToInt(CabRating::getRating).average().orElse(0.0);
     }
 }

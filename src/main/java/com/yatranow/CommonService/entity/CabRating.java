@@ -10,9 +10,10 @@ public class CabRating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long cabId;
+    private Long cabRegistrationId;
     private Long userId;
     private int rating;
+    private String comment;
 
     public Long getId() {
         return id;
@@ -21,14 +22,6 @@ public class CabRating {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Long getCabId() {
-		return cabId;
-	}
-
-	public void setCabId(Long cabId) {
-		this.cabId = cabId;
-	}
 
 	public Long getUserId() {
 		return userId;
@@ -45,5 +38,21 @@ public class CabRating {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+	public Long getCabRegistrationId() {
+		return cabRegistrationId;
+	}
+
+	public void setCabRegistrationId(Long cabRegistrationId) {
+		this.cabRegistrationId = cabRegistrationId;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }
 

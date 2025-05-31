@@ -1,7 +1,5 @@
 package com.yatranow.CommonService.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.yatranow.CommonService.entity.CabRating;
 import com.yatranow.CommonService.response.ApiResponse;
+import com.yatranow.CommonService.response.RatingResponse;
 import com.yatranow.CommonService.service.CabRatingService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -40,23 +39,23 @@ public class CabRatingController {
     }
 
     @Operation(summary = "Get all ratings for a cab", description = "Fetches all ratings for a specific cab by cabId.")
-    @GetMapping("/{cabId}")
+    @GetMapping("/{cabRegistrationId}")
     public ResponseEntity<ApiResponse> getRatings(
-            @Parameter(description = "ID of the cab to fetch ratings for", required = true) @PathVariable("cabId") Long cabId) {
+            @Parameter(description = "ID of the cab to fetch ratings for", required = true) @PathVariable("cabRegistrationId") Long cabRegistrationId) {
         try {
-            List<CabRating> ratings = service.getRatingsByCabId(cabId);
-            return ResponseEntity.ok(new ApiResponse("success", ratings, 200));
+            RatingResponse ratingResponse = service.getRatingsByCabId(cabRegistrationId);
+            return ResponseEntity.ok(new ApiResponse("success", ratingResponse, 200));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(new ApiResponse("error", e.getMessage(), 500));
         }
     }
 
     @Operation(summary = "Get average rating for a cab", description = "Calculates the average rating for a specific cab by cabId.")
-    @GetMapping("/{cabId}/average-rating")
+    @GetMapping("/{cabRegistrationId}/average-rating")
     public ResponseEntity<ApiResponse> getAverageRating(
-            @Parameter(description = "ID of the cab to calculate the average rating for", required = true) @PathVariable("cabId") long cabId) {
+            @Parameter(description = "ID of the cab to calculate the average rating for", required = true) @PathVariable("cabRegistrationId") long cabRegistrationId) {
         try {
-            double averageRating = service.getAverageRating(cabId);
+            double averageRating = service.getAverageRating(cabRegistrationId);
             return ResponseEntity.ok(new ApiResponse("success", averageRating, 200));
         } catch (Exception e) {
             return ResponseEntity.status(500).body(new ApiResponse("error", e.getMessage(), 500));
