@@ -10,6 +10,7 @@ public class CabRating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long bookingId;
     private Long cabRegistrationId;
     private Long userId;
     private int rating;
@@ -22,6 +23,14 @@ public class CabRating {
     public void setId(Long id) {
         this.id = id;
     }
+
+	public Long getBookingId() {
+		return bookingId;
+	}
+
+	public void setBookingId(Long bookingId) {
+		this.bookingId = bookingId;
+	}
 
 	public Long getUserId() {
 		return userId;
